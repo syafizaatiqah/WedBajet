@@ -1,0 +1,79 @@
+﻿@model WedBajet.ViewModels.BasketViewModel
+
+@{ 
+ ViewBag.Title = " Bakul Anda";
+}
+<h2>@ViewBag.Title</h2>
+@if (Model.BasketLines.Count() > 0)
+{
+<div>
+    @using (Html.BeginForm("UpdateBasket", "Basket"))
+    {
+        @Html.AntiForgeryToken();
+        <input class="btn btn-sm btn-success" type="submit" value="Kemaskini Bakul" />
+        <hr />
+        <div class="row">
+            <div class="col-md-4"><label>Nama Pakej</label></div>
+            <div class="col-md-3"><label>Kuantiti</label></div>
+            <div class="col-md-1"><label>Harga</label></div>
+            <div class="col-md-1"><label>Jumlah Keseluruhan:</label></div>
+        </div>
+        <hr />
+        for (int i = 0; i < Model.BasketLines.Count; i++)
+        {
+        <div class="row">
+            <div class="col-md-4">
+                @Html.ActionLink(Model.BasketLines[i].Product.Name, "Details", "Products", new { id = Model.BasketLines[i].ProductID }, null)<br />
+            </div>
+
+            <div class="col-md-3">
+                @Html.HiddenFor(productID => Model.BasketLines[i].ProductID)
+                @Html.TextBoxFor(quantity => Model.BasketLines[i].Quantity)
+                <p>
+                    @Html.ValidationMessageFor(quantity => Model.BasketLines[i].Quantity, "", new { @class = "text-danger" })
+                </p>
+            </div>
+            <div class="col-md-1">
+                @Html.DisplayFor(price => Model.BasketLines[i].Product.Price)
+            </div>
+            <div class="col-md-1">
+                @((Model.BasketLines[i].Quantity * Model.BasketLines[i].Product.Price).ToString("c"))
+            </div>
+            <div class="col-md-1">
+                @Html.ActionLink("Buang", "RemoveLine", "Basket", new { id = Model.BasketLines[i].Product.ID }, null)
+            </div>
+
+            <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_s-xclick">
+                <input type="hidden" name="hosted_button_id" value="XP74J54MH6964">
+                <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+            </form>
+
+
+        </div>
+                
+
+            <hr />
+        }
+    }
+    <div class="row">
+        <div class="col-md-8">
+            @Html.DisplayNameFor(model => model.TotalCost)
+        </div>
+        <div class="col-md-1">
+            @Html.DisplayFor(model => model.TotalCost)
+        </div>
+    </div>
+</div>
+}
+else
+{
+    <p>Your Basket is empty</p>
+}
+<div>
+    @Html.ActionLink("Teruskan beli belah", "Index", "Products")
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -26,5 +26,12 @@ namespace WedBajet.Controllers
 
             return View();
         }
+
+        public ActionResult PaymentWithPaypal()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
     }
 }

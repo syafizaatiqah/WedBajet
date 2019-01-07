@@ -1,0 +1,26 @@
+﻿@model WedBajet.Models.Category
+
+@{
+    ViewBag.Title = "Butiran";
+}
+
+<h2>Butiran</h2>
+
+<div>
+    <h4>Jenis Bridal</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Kembali ke senarai", "Index")
+</p>

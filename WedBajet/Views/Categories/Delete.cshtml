@@ -1,0 +1,31 @@
+﻿@model WedBajet.Models.Category
+
+@{
+    ViewBag.Title = "Buang";
+}
+
+
+<h3>Andakah anda pasti ingin hapus data ini?</h3>
+<div>
+    <h4>Jenis Bridal</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Buang" class="btn btn-sm btn-success" /> |
+            @Html.ActionLink("Kembali ke senarai", "Index")
+        </div>
+    }
+</div>
