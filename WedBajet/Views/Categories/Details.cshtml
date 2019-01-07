@@ -6,6 +6,8 @@
 
 <h2>Butiran</h2>
 
+@Html.ActionLink("Create", "Create", new { id = Model.ID }) 
+
 <div>
     <h4>Jenis Bridal</h4>
     <hr />
@@ -22,5 +24,8 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Details", "Details", new { id = Model.ID }) |
+    @Html.ActionLink("Buang", "Delete", new { id = Model.ID })
+
     @Html.ActionLink("Kembali ke senarai", "Index")
 </p>

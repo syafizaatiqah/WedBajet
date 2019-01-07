@@ -6,6 +6,8 @@
 
 <h2>Senarai Pakej</h2>
 
+@Html.ActionLink("Tambah Maklumat", "Create", new { id = item.ID })
+
 <table class="table">
     <tr>
         <th>
@@ -20,21 +22,24 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.ActionLink("Butiran", "Details", new { id=item.ID }) 
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Butiran", "Details", new { id = item.ID })
+                @Html.ActionLink("Buang", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
 
 </table>

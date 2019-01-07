@@ -46,23 +46,23 @@ namespace WedBajet
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
             // Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            app.UseMicrosoftAccountAuthentication(
+                clientId: "6fc7dd15-0d88-4b19-b8d9-ec97816f6ab4",
+                clientSecret: "aupdFERN7}](~qfuZKA0139");
 
             //app.UseTwitterAuthentication(
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "394800344592174",
+               appSecret: "6b457f0cf562978db42a505361d2351a");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "982136231527-dqmsic14ogtl02qtu6adk74octb2f2f9.apps.googleusercontent.com",
+                ClientSecret = "D5lR7SYxQQNwc6r0m_6NZqJ0"
+            });
         }
     }
 }

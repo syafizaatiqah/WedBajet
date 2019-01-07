@@ -23,9 +23,17 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Utama", "Index", "Home")</li>
                     <li>@Html.ActionLink("Pakej", "About", "Home")</li>
+                    <li>@Html.ActionLink("Bridal", "Index", "Categories")</li>
                     <li>@Html.ActionLink("Tempahan", "Index", "Products")</li>
-                    <li>@Html.ActionLink("Bayaran", "Index", "Paypal")</li>
+
                 </ul>
+                @using (Html.BeginForm("Index", "Pakej", FormMethod.Get, new { @class = "navbar-form navbar-left" }))
+                {
+                    <div class="form-group">
+                        @Html.TextBox("Search", null, new { @class = "form-control", @placeholder = "cari pakej" })
+                    </div>
+                    <button type="submit" class="=" btn btn-default">Cari</button>
+                }
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
